@@ -1,0 +1,20 @@
+# Start Generation Here
+# Node modules
+node_modules/
+# Logs
+logs/
+*.log
+# Build output
+dist/
+build/
+# Environment variables
+.env
+# Dependency directories
+bower_components/
+# IDE specific files
+.vscode/
+.idea/
+# OS generated files
+.DS_Store
+Thumbs.db
+# End Generation Here
