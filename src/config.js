@@ -22,3 +22,7 @@ const evmWalletChains = {
 export const NetworkId = 'testnet';
 export const HelloNearContract = contractPerNetwork[NetworkId];
 export const EVMWalletChain = evmWalletChains[NetworkId];
+
+export const AuthContract = NetworkId === 'testnet' 
+  ? 'auth.testnet' 
+  : 'auth.near';

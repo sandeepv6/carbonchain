@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState, useContext } from 'react';
+import styles from '../app/app.module.css';
 
 import { NearContext } from '@/wallets/near';
 import NearLogo from '/public/near-logo.svg';
@@ -23,13 +24,25 @@ export const Navigation = () => {
   }, [signedAccountId, wallet]);
 
   return (
-    <nav className="navbar navbar-expand-lg">
-      <div className="container-fluid">
-        <Link href="/" passHref legacyBehavior>
-          <Image priority src={NearLogo} alt="NEAR" width="30" height="24" className="d-inline-block align-text-top" />
+    <nav className={`${styles.nav}`}>
+      <div className={styles.navContent}>
+        <Link href="/" className={styles.logoContainer}>
+          <Image
+            src="/carbon-chain-logo.svg"
+            alt="Carbon Chain"
+            width={40}
+            height={40}
+            className={styles.logo}
+          />
+          <span className={styles.logoText}>Carbon Chain</span>
         </Link>
-        <div className='navbar-nav pt-1'>
-          <button className="btn btn-secondary" onClick={action} > {label} </button>
+
+        <div className={styles.navLinks}>
+          <Link href="/about">About</Link>
+          <Link href="/how-it-works">How It Works</Link>
+          <Link href="/auditing">Auditing Process</Link>
+          <Link href="/contact">Contact</Link>
+          <button className="btn btn-secondary" onClick={action}>{label}</button>
         </div>
       </div>
     </nav>
