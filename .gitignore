@@ -1,6 +1,7 @@
 # Start Generation Here
 # Node modules
 node_modules/
+.next/
 # Logs
 logs/
 *.log
