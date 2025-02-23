@@ -1,45 +1,88 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Carbon Chain - Hack Canada 2025
+
+This project is a blockchain-based platform built on the NEAR protocol, designed to incentivize carbon footprint reduction initiatives. It allows users to submit their carbon reduction efforts, which are then verified by staff. Upon verification, users are rewarded with fungible tokens that represent their contribution to reducing carbon emissions.
+
+## Features
+
+- **User Dashboard**: Submit and track carbon reduction initiatives.
+- **Staff Dashboard**: Review and verify submitted initiatives.
+- **Token Minting**: Mint tokens based on verified carbon reduction.
+- **NEP-141 Compliance**: Implements NEAR's fungible token standard for token management.
+
+## Technologies Used
+
+- **Next.js**: Frontend framework for building the user interface.
+- **NEAR Protocol**: Blockchain platform for deploying smart contracts.
+- **NEP-141**: Standard for fungible tokens on NEAR.
+- **React**: JavaScript library for building user interfaces.
+- **TypeScript**: Superset of JavaScript for type safety.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js (>=18)
+- NEAR CLI
+- NEAR Testnet Account
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/yourusername/carbon-footprint-platform.git
+   cd carbon-footprint-platform
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-## Learn More about NEAR
+3. **Set up NEAR environment**:
+   - Install NEAR CLI: `npm install -g near-cli`
+   - Log in to NEAR: `near login`
 
-To learn more about NEAR, take a look at the following resources:
+4. **Deploy the smart contract**:
+   - Compile and deploy the contract:
+     ```bash
+     npm run build
+     near deploy --accountId <your-account-id> --wasmFile build/contract.wasm
+     ```
 
-- [NEAR Documentation](https://docs.near.org) - learn about NEAR.
-- [Frontend Docs](https://docs.near.org/build/web3-apps/quickstart) - learn about this example.
+### Running the Application
 
-You can check out [the NEAR repository](https://github.com/near) - your feedback and contributions are welcome!
+1. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
 
-## Learn More about Next.js
+2. **Open your browser**:
+   - Visit [http://localhost:3000](http://localhost:3000) to view the application.
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **User Dashboard**: Upload documents detailing carbon reduction initiatives. Track the status of submissions and view token balance.
+- **Staff Dashboard**: Review pending initiatives and verify them to mint tokens for users.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### NEAR Protocol
 
-## Deploy on Vercel
+- [NEAR Documentation](https://docs.near.org) - Learn about NEAR's blockchain platform.
+- [NEP-141 Standard](https://nomicon.io/Standards/Tokens/FungibleTokenCore) - Understand the fungible token standard on NEAR.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Next.js
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - Interactive Next.js tutorial.
+
+## Contributors
+- [Karanjot Gaidu](https://github.com/karanjot-gaidu)
+- [Sandeep Virk](https://github.com/sandeepv6)
+- [Vishesh Gupta](https://github.com/VG-05)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For questions or support, please contact [your-email@example.com](mailto:your-email@example.com).
