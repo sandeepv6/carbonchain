@@ -1,0 +1,43 @@
+
+/* filepath: src/app/app.module.css */
+.flowchart {
+  background-color: rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 100px 0;
+}
+
+.flowstep {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  padding: 20px;
+  width: 80%;
+  text-align: center;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.flowstep:hover {
+  transform: translateY(-10px);
+}
+
+.arrow {
+  font-size: 24px;
+  margin: 10px 0;
+  color: var(--primary-color);
+}
+
+.flowstep h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.flowstep p {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: 1rem;
+}
