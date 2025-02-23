@@ -1,6 +1,6 @@
 const contractPerNetwork = {
-  mainnet: 'hello.near-examples.near',
-  testnet: 'hello.near-examples.testnet',
+  mainnet: 'carbon-footprint.mainnet',
+  testnet: 'carbon-footprint.testnet',
 };
 
 // Chains for EVM Wallets 
@@ -20,9 +20,5 @@ const evmWalletChains = {
 }
 
 export const NetworkId = 'testnet';
-export const HelloNearContract = contractPerNetwork[NetworkId];
+export const CarbonFootprintContract = contractPerNetwork[NetworkId];
 export const EVMWalletChain = evmWalletChains[NetworkId];
-
-export const AuthContract = NetworkId === 'testnet' 
-  ? 'auth.testnet' 
-  : 'auth.near';

@@ -36,41 +36,62 @@ export default function Dashboard() {
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
-
+  
     setIsUploading(true);
     setUploadProgress(0);
-
+  
     try {
-      // First upload file to IPFS or your preferred storage
-      const formData = new FormData();
-      formData.append('file', file);
-      
       // Simulate upload progress
       const interval = setInterval(() => {
         setUploadProgress(prev => Math.min(prev + 10, 90));
       }, 500);
-
-      // TODO: Replace with your actual file upload endpoint
+  
+      const formData = new FormData();
+      formData.append('file', file);
+  
       const response = await fetch('/api/upload', {
         method: 'POST',
         body: formData
       });
+  
+      if (!response.ok) {
+        throw new Error('File upload failed');
+      }
+  
       const { fileUrl, parsedData } = await response.json();
+      
+      // Send parsed data to chat route for analysis
+      const analysisResponse = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ text: parsedData }),
+      });
 
+      if (!analysisResponse.ok) {
+        throw new Error('Analysis failed');
+      }
+
+      const carbonAnalysis = await analysisResponse.json();
+      console.log(carbonAnalysis);
+      
       clearInterval(interval);
       setUploadProgress(100);
-
-      // Create ticket on blockchain
+  
+      // Create ticket on blockchain with analysis data
       await wallet.callMethod({
         contractId: AuthContract,
         method: 'create_ticket',
         args: {
           document_url: fileUrl,
-          parsed_data: parsedData,
+          carbon_reduction: carbonAnalysis.total_reduction,
+          percentage_reduction: carbonAnalysis.percentage_reduction,
+          explanation: carbonAnalysis.explanation,
           account_id: signedAccountId
         }
       });
-
+  
       await fetchTickets();
       setIsUploading(false);
       setUploadProgress(0);
