@@ -5,6 +5,7 @@ import Link from 'next/link';
 import styles from './app.module.css';
 import globalStyles from './globals.css';
 import Footer from '@/components/footer';
+import { TypeAnimation } from 'react-type-animation';
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,10 +52,22 @@ export default function Home() {
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <h1>{text}</h1>
+          <h1>
+            <TypeAnimation
+              sequence={[
+                'Incentivizing', 1000,
+                'Empowering', 1000,
+                'Motivating', 1000,
+              ]}
+              wrapper="span"
+              cursor={true}
+              repeat={Infinity}
+            />
+          </h1>
+          <h1>Carbon-Neutral Future</h1>
           <p>Rewarding companies that lead the fight against climate change through blockchain-powered transparency and tokenized incentives.</p>
           <div className={styles.heroButtons}>
-            <Link href="/register" className={globalStyles.primaryButton}>
+            <Link href="/login" className={globalStyles.primaryButton}>
               Join the Movement
             </Link>
             <Link href="/how-it-works" className={globalStyles.secondaryButton}>
