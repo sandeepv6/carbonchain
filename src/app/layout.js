@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body>
+      <body style={{ backgroundColor: 'var(--background-dark)' }}>
         <NearContext.Provider value={{ wallet, signedAccountId }}>
           <Navigation />
           {children}

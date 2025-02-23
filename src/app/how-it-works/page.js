@@ -1,10 +1,11 @@
 import styles from './auditing.module.css';
-
+import Footer from '@/components/footer';
 export default function Auditing() {
   return (
-        <div className={styles.flowchart}>
-          <div className={styles.flowstep}>
-            <h3>1️⃣ Submit Your Evidence</h3>
+    <>
+      <div className={styles.flowchart}>
+        <div className={styles.flowstep}>
+          <h3>1️⃣ Submit Your Evidence</h3>
             <p>Users upload forms, videos, or images as proof of their ecological actions.</p>
             <p>The system provides guidelines to ensure submissions meet verification standards.</p>
           </div>
@@ -28,5 +29,7 @@ export default function Auditing() {
             <p>These tokens can be used for offsetting emissions, trading, or supporting eco-friendly projects.</p>
           </div>
         </div>
+        <Footer/>
+        </>
   );
 }

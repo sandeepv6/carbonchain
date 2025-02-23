@@ -12,17 +12,25 @@ export const Navigation = () => {
   const router = useRouter();
   const [action, setAction] = useState(() => { });
   const [label, setLabel] = useState('Loading...');
+  const [isStaff, setIsStaff] = useState(false);
 
   useEffect(() => {
     if (!wallet) return;
 
+    // Check if the user is staff (you can modify this condition based on your needs)
+    const checkIfStaff = () => {
+      return signedAccountId === 'karanjotsingh.testnet'; // Replace with your staff account check
+    };
+
     if (signedAccountId) {
+      setIsStaff(checkIfStaff());
       setAction(() => async () => {
         await wallet.signOut();
         router.push('/');
       });
-      setLabel(`Logout ${signedAccountId}`);
+      setLabel('Logout');
     } else {
+      setIsStaff(false);
       setAction(() => wallet.signIn);
       setLabel('Login');
     }
@@ -43,11 +51,26 @@ export const Navigation = () => {
         </Link>
 
         <div className={styles.navLinks}>
+          {/* Show dashboard link only when logged in */}
+          {signedAccountId && (
+            <Link 
+              href={isStaff ? "/staff-dashboard" : "/dashboard"}
+              className={styles.dashboardLink}
+            >
+              {isStaff ? "Staff Dashboard" : "Dashboard"}
+            </Link>
+          )}
           <Link href="/about">About</Link>
           <Link href="/how-it-works">How It Works</Link>
-          <Link href="/auditing">Auditing Process</Link>
           <Link href="/contact">Contact</Link>
-          <button className="btn btn-secondary" onClick={action}>{label}</button>
+          
+          
+          <button 
+            className={styles.loginButton} 
+            onClick={action}
+          >
+            {label}
+          </button>
         </div>
       </div>
     </nav>
