@@ -4,8 +4,8 @@ import { NearBindgen, near, call, view } from 'near-sdk-js';
 interface Ticket {
   id: string;
   documentUrl: string;
-  carbonReduction: number;
-  percentageReduction: number;
+  carbonReduction: string;
+  percentageReduction: string;
   explanation: string;
   accountId: string;
   timestamp: number;
@@ -18,14 +18,14 @@ class CarbonFootprint {
   @call({})
   create_ticket({ document_url, carbon_reduction, percentage_reduction, explanation, account_id }: {
     document_url: string,
-    carbon_reduction: number,
-    percentage_reduction: number,
+    carbon_reduction: string,
+    percentage_reduction: string,
     explanation: string,
     account_id: string
   }): void {
     // Create new ticket
     const ticket: Ticket = {
-      id: `${account_id}-${Date.now()}`,
+      id: `${account_id}+${this.tickets[account_id] ? `${this.tickets[account_id].length}` : "0"} `,
       documentUrl: document_url,
       carbonReduction: carbon_reduction,
       percentageReduction: percentage_reduction,

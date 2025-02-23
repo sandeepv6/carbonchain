@@ -155,9 +155,9 @@ export default function Dashboard() {
                   </span>
                 </div>
                 <div className={styles.ticketDetails}>
-                  <p><strong>Submitted:</strong> {new Date(ticket.created_at).toLocaleDateString()}</p>
+                  <p><strong>Submitted:</strong> {new Date(ticket.timestamp).toLocaleDateString()}</p>
                   <p><strong>Carbon Reduction:</strong> {ticket.carbon_reduction || 'Pending Review'} MT</p>
-                  <p><strong>Tokens Earned:</strong> {ticket.tokens_earned || '0'}</p>
+                  <p><strong>Tokens Earned:</strong> {ticket.carbon_reduction || '0'}</p>
                 </div>
                 <div className={styles.ticketActions}>
                   <button className={styles.viewButton}>View Details</button>
