@@ -8,6 +8,8 @@ import Footer from '@/components/footer';
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [text, setText] = useState('');
+  const fullText = 'Incentivizing a Carbon-Neutral Future';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,13 +19,39 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    let currentIndex = 0;
+    const intervalId = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(intervalId);
+      }
+    }, 100);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${styles.carbonBackground}`}>
+      {/* Floating Atoms */}
+      {[...Array(20)].map((_, index) => (
+        <div
+          key={index}
+          className={styles.atom}
+          style={{
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 5}s`,
+          }}
+        />
+      ))}
 
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <h1>Incentivizing a Carbon-Neutral Future</h1>
+          <h1>{text}</h1>
           <p>Rewarding companies that lead the fight against climate change through blockchain-powered transparency and tokenized incentives.</p>
           <div className={styles.heroButtons}>
             <Link href="/register" className={globalStyles.primaryButton}>

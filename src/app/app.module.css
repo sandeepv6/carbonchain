@@ -5,6 +5,35 @@
   font-family: 'Inter', sans-serif;
 }
 
+/* app.module.css */
+.carbonBackground {
+  position: relative;
+  overflow: hidden;
+  background-color: #000; /* Dark background */
+}
+
+.atom {
+  position: absolute;
+  width: 10px; /* Size of the atom */
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: float 10s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(20px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
 /* Navigation Styles */
 .nav {
   position: fixed;

@@ -5,7 +5,7 @@ import styles from '../app/app.module.css';
 import { useRouter } from 'next/navigation';
 
 import { NearContext } from '@/wallets/near';
-import NearLogo from '/public/Logo.png';
+import NearLogo from '/public/logoblack.png';
 
 export const Navigation = () => {
   const { signedAccountId, wallet } = useContext(NearContext);
@@ -41,7 +41,7 @@ export const Navigation = () => {
       <div className={styles.navContent}>
         <Link href="/" className={styles.logoContainer}>
           <Image
-            src="/Logo.png"
+            src="/logoblack.png"
             alt="Carbon Chain"
             width={40}
             height={40}
