@@ -1,0 +1,244 @@
+.dashboardContainer {
+  min-height: 100vh;
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  padding: 2rem;
+  margin-top: 15px;
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+}
+
+.mainContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ticketGrid {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 2rem;
+  height: calc(100vh - 200px);
+}
+
+.ticketsList {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 1.5rem;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.ticketsList h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.ticketsContainer {
+  overflow-y: auto;
+  flex-grow: 1;
+  padding-right: 0.5rem;
+}
+
+.ticketsContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.ticketsContainer::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.ticketsContainer::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+.ticketCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.ticketCard:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.ticketCard.selected {
+  border-color: var(--primary-color);
+  background: rgba(0, 200, 83, 0.1);
+}
+
+.ticketHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.ticketHeader h3 {
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.submitter {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ticketMeta {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ticketMeta p {
+  margin: 0.25rem 0;
+}
+
+.ticketDetails {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 2rem;
+  height: 100%;
+  overflow: hidden;
+}
+
+.detailsCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.documentPreview {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.documentPreview iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.aiAnalysis {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.aiAnalysis pre {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.875rem;
+  overflow-x: auto;
+}
+
+.verificationForm {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-light);
+}
+
+.formActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.approveButton, .rejectButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.approveButton {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  flex: 2;
+}
+
+.approveButton:hover:not(:disabled) {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.approveButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rejectButton {
+  background-color: rgba(255, 77, 77, 0.2);
+  color: #ff4d4d;
+  flex: 1;
+}
+
+.rejectButton:hover {
+  background-color: rgba(255, 77, 77, 0.3);
+  transform: translateY(-2px);
+}
+
+.noSelection {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.1rem;
+}
+
+@media (max-width: 1024px) {
+  .ticketGrid {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .ticketsList {
+    height: 400px;
+  }
+}

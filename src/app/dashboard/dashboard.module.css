@@ -1,0 +1,226 @@
+.dashboardContainer {
+  min-height: 100vh;
+  background-color: #000;
+  color: var(--text-light);
+  padding: 2rem;
+  margin-top: 15px;
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+}
+
+.mainContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.uploadSection {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 2rem;
+}
+
+.uploadSection h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.uploadCard {
+  position: relative;
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.uploadCard:hover {
+  border-color: var(--primary-color);
+  background: rgba(0, 200, 83, 0.05);
+}
+
+.fileInput {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.fileInput:disabled {
+  cursor: not-allowed;
+}
+
+.uploadLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.uploadIcon {
+  font-size: 3rem;
+}
+
+.supportedFormats {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.uploadProgress {
+  width: 100%;
+  position: relative;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressBar {
+  position: absolute;
+  height: 100%;
+  background: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.ticketsSection {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 2rem;
+}
+
+.ticketsSection h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.ticketsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.ticketCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.ticketCard:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.ticketHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.ticketHeader h3 {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+
+.status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status[data-status="pending"] {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+}
+
+.status[data-status="approved"] {
+  background: rgba(0, 200, 83, 0.2);
+  color: var(--primary-color);
+}
+
+.status[data-status="rejected"] {
+  background: rgba(255, 77, 77, 0.2);
+  color: #ff4d4d;
+}
+
+.ticketDetails {
+  margin-bottom: 1.5rem;
+}
+
+.ticketDetails p {
+  margin: 0.5rem 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.ticketActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.viewButton {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--primary-color);
+  background: transparent;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.viewButton:hover {
+  background: var(--primary-color);
+  color: var(--text-light);
+}
+
+.noTickets {
+  text-align: center;
+  padding: 3rem;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .dashboardContainer {
+    padding: 1rem;
+  }
+
+  .header {
+    padding: 1rem 0;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .uploadSection,
+  .ticketsSection {
+    padding: 1.5rem;
+  }
+
+  .ticketsList {
+    grid-template-columns: 1fr;
+  }
+}

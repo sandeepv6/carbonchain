@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './app.module.css';
-import globalStyles from '@/styles/globals.css';
+import globalStyles from './globals.css';
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -18,29 +18,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      {/* Navigation */}
-      <nav className={`${styles.nav} ${isScrolled ? styles.scrolled : ''}`}>
-        <div className={styles.navContent}>
-          <Link href="/" className={styles.logoContainer}>
-            <Image
-              src="/carbon-chain-logo.svg" // You'll need to add this logo
-              alt="Carbon Chain"
-              width={40}
-              height={40}
-              className={styles.logo}
-            />
-            <span className={styles.logoText}>Carbon Chain</span>
-          </Link>
-
-          <div className={styles.navLinks}>
-            <Link href="/about">About</Link>
-            <Link href="/how-it-works">How It Works</Link>
-            <Link href="/auditing">Auditing Process</Link>
-            <Link href="/contact">Contact</Link>
-            <Link href="/login" className={styles.loginButton}>Login</Link>
-          </div>
-        </div>
-      </nav>
 
       {/* Hero Section */}
       <section className={styles.hero}>

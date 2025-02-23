@@ -2,12 +2,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState, useContext } from 'react';
 import styles from '../app/app.module.css';
+import { useRouter } from 'next/navigation';
 
 import { NearContext } from '@/wallets/near';
 import NearLogo from '/public/near-logo.svg';
 
 export const Navigation = () => {
   const { signedAccountId, wallet } = useContext(NearContext);
+  const router = useRouter();
   const [action, setAction] = useState(() => { });
   const [label, setLabel] = useState('Loading...');
 
@@ -15,13 +17,16 @@ export const Navigation = () => {
     if (!wallet) return;
 
     if (signedAccountId) {
-      setAction(() => wallet.signOut);
+      setAction(() => async () => {
+        await wallet.signOut();
+        router.push('/');
+      });
       setLabel(`Logout ${signedAccountId}`);
     } else {
       setAction(() => wallet.signIn);
       setLabel('Login');
     }
-  }, [signedAccountId, wallet]);
+  }, [signedAccountId, wallet, router]);
 
   return (
     <nav className={`${styles.nav}`}>
