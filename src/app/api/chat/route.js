@@ -58,15 +58,17 @@ const getGroqChatCompletion = async (text) => {
       // how it should behave throughout the conversation.
       {
         role: "system",
-        content: `You are tasked with calculating the carbon emissions reduction for a theoretical company based on the provided data. The company has implemented measures to reduce carbon emissions, and you need to determine the total reduction in metric tons of CO₂ equivalent (CO₂e) based on the following input data:
+        content: `
+        Return the answer in a JSON format.
+        {total_reduction: [Enter value in metric tons CO₂e], percentage_reduction: [Enter value in percentage], explanation: [Enter explanation]}
+        You are tasked with calculating the carbon emissions reduction for a theoretical company based on the provided data. The company has implemented measures to reduce carbon emissions, and you need to determine the total reduction in metric tons of CO₂ equivalent (CO₂e) based on the following input data:
 
         Energy Consumption, Transportation Emissions, Waste Management, Water Usage (related emissions)
         Using this data, calculate:
 
         The total carbon emissions reduction in metric tons CO₂e.
         The percentage reduction compared to the total emissions before the project.
-        Return the answer in a JSON format.
-        {total_reduction: [Enter value in metric tons CO₂e], percentage_reduction: [Enter value in percentage], explanation: [Enter explanation]}`,
+        `,
       },
       // Set a user message for the assistant to respond to.
       {
