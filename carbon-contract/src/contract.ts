@@ -9,6 +9,7 @@ interface Ticket {
   explanation: string;
   accountId: string;
   timestamp: number;
+  status: string;
 }
 
 @NearBindgen({})
@@ -23,26 +24,41 @@ class CarbonFootprint {
     explanation: string,
     account_id: string
   }): void {
-    // Create new ticket
     const ticket: Ticket = {
-      id: `${account_id}+${this.tickets[account_id] ? `${this.tickets[account_id].length}` : "0"} `,
+      id: `${account_id}-${this.tickets[account_id] ? this.tickets[account_id].length : 0}`,
       documentUrl: document_url,
       carbonReduction: carbon_reduction,
       percentageReduction: percentage_reduction,
       explanation: explanation,
       accountId: account_id,
-      timestamp: Date.now()
+      timestamp: Date.now(),
+      status: 'Pending'
     };
 
-    // Initialize array for user if it doesn't exist
     if (!this.tickets[account_id]) {
       this.tickets[account_id] = [];
     }
 
-    // Add ticket to user's tickets
     this.tickets[account_id].push(ticket);
     
     near.log(`Created ticket for ${account_id}`);
+  }
+
+  @call({})
+  verify_ticket({ ticket_id, account_id }: { ticket_id: string, account_id: string }): void {
+    const userTickets = this.tickets[account_id];
+    if (!userTickets) {
+      near.log(`No tickets found for ${account_id}`);
+      return;
+    }
+
+    const ticket = userTickets.find(t => t.id === ticket_id);
+    if (ticket) {
+      ticket.status = 'Verified';
+      near.log(`Verified ticket ${ticket_id} for ${account_id}`);
+    } else {
+      near.log(`Ticket ${ticket_id} not found for ${account_id}`);
+    }
   }
 
   @view({})
