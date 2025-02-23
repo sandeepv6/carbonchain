@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './dashboard.module.css';
 import { NearContext } from '@/wallets/near';
-import { AuthContract } from '@/config';
+import { CarbonFootprintContract } from '@/config';
 
 export default function Dashboard() {
   const { signedAccountId, wallet } = useContext(NearContext);
@@ -23,7 +23,7 @@ export default function Dashboard() {
   const fetchTickets = async () => {
     try {
       const userTickets = await wallet.viewMethod({
-        contractId: AuthContract,
+        contractId: CarbonFootprintContract,
         method: 'get_user_tickets',
         args: { account_id: signedAccountId }
       });
@@ -81,7 +81,7 @@ export default function Dashboard() {
   
       // Create ticket on blockchain with analysis data
       await wallet.callMethod({
-        contractId: AuthContract,
+        contractId: CarbonFootprintContract,
         method: 'create_ticket',
         args: {
           document_url: fileUrl,
