@@ -1,6 +1,6 @@
 const contractPerNetwork = {
   mainnet: 'carbon-footprint.mainnet',
-  testnet: 'carbon-footprint.testnet',
+  testnet: 'karanjots.testnet',
 };
 
 // Chains for EVM Wallets 
