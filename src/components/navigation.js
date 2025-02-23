@@ -53,7 +53,7 @@ export const Navigation = () => {
         <div className={styles.navLinks}>
           {/* Show dashboard link only when logged in */}
           {signedAccountId && (
-            <Link 
+            <Link
               href={isStaff ? "/staff-dashboard" : "/dashboard"}
               className={styles.dashboardLink}
             >
@@ -62,11 +62,12 @@ export const Navigation = () => {
           )}
           <Link href="/about">About</Link>
           <Link href="/how-it-works">How It Works</Link>
+          <Link href="https://testnet.nearblocks.io/address/karanjots.testnet" target="_blank">Public Ledger</Link>
           <Link href="/contact">Contact</Link>
-          
-          
-          <button 
-            className={styles.loginButton} 
+
+
+          <button
+            className={styles.loginButton}
             onClick={action}
           >
             {label}
