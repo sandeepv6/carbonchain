@@ -20,5 +20,5 @@ const evmWalletChains = {
 }
 
 export const NetworkId = 'testnet';
-export const CarbonFootprintContract = contractPerNetwork[NetworkId];
+export const CarbonFootprintContract = 'karanjots.testnet';
 export const EVMWalletChain = evmWalletChains[NetworkId];
