@@ -5,14 +5,14 @@ const groq = new Groq();
 export async function POST(request) {
   try {
     const { text } = await request.json();
-    
+
     if (!text) {
       return new Response('No text provided', { status: 400 });
     }
 
     const chatCompletion = await getGroqChatCompletion(text);
     const content = chatCompletion.choices[0]?.message?.content || "";
-    
+
     // Parse the content as JSON
     let jsonResponse;
     try {
@@ -22,10 +22,10 @@ export async function POST(request) {
       jsonResponse = {
         total_reduction: 0,
         percentage_reduction: 0,
-        explanation: "Could not parse the document properly"
+        explanation: "Could not parse the document properly: " + content
       };
     }
-    
+
     return new Response(JSON.stringify(jsonResponse), {
       status: 200,
       headers: {
@@ -38,7 +38,7 @@ export async function POST(request) {
       total_reduction: 0,
       percentage_reduction: 0,
       explanation: "Error processing the document"
-    }), { 
+    }), {
       status: 500,
       headers: {
         'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ const getGroqChatCompletion = async (text) => {
       {
         role: "system",
         content: `
-        Return the answer in a JSON format.
+        Return the answer in a JSON object, no markup.
         {total_reduction: [Enter value in metric tons CO₂e], percentage_reduction: [Enter value in percentage], explanation: [Enter explanation]}
         You are tasked with calculating the carbon emissions reduction for a theoretical company based on the provided data. The company has implemented measures to reduce carbon emissions, and you need to determine the total reduction in metric tons of CO₂ equivalent (CO₂e) based on the following input data:
 
@@ -68,6 +68,7 @@ const getGroqChatCompletion = async (text) => {
 
         The total carbon emissions reduction in metric tons CO₂e.
         The percentage reduction compared to the total emissions before the project.
+        For example, return in a similar format to {"total_reduction": 1000, "percentage_reduction": 50, "explanation": "<explanation here>"}
         `,
       },
       // Set a user message for the assistant to respond to.
