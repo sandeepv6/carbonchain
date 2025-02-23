@@ -1,6 +1,6 @@
 const contractPerNetwork = {
-  mainnet: 'carbon-footprint.mainnet',
-  testnet: 'carbon-footprint.testnet',
+  mainnet: 'carbon-contract.mainnet',
+  testnet: 'carbon-contract.testnet',
 };
 
 // Chains for EVM Wallets 
@@ -20,5 +20,5 @@ const evmWalletChains = {
 }
 
 export const NetworkId = 'testnet';
-export const CarbonFootprintContract = contractPerNetwork[NetworkId];
+export const CarbonFootprintContract = 'karanjots.testnet';
 export const EVMWalletChain = evmWalletChains[NetworkId];
