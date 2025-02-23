@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './staff-dashboard.module.css';
 import { NearContext } from '@/wallets/near';
-import { AuthContract } from '@/config';
+import { CarbonFootprintContract } from '@/config';
 
 export default function StaffDashboard() {
   const { signedAccountId, wallet } = useContext(NearContext);
@@ -23,7 +23,7 @@ export default function StaffDashboard() {
   const fetchPendingTickets = async () => {
     try {
       const tickets = await wallet.viewMethod({
-        contractId: AuthContract,
+        contractId: CarbonFootprintContract,
         method: 'get_pending_tickets'
       });
       setPendingTickets(tickets);
@@ -36,7 +36,7 @@ export default function StaffDashboard() {
     setIsProcessing(true);
     try {
       await wallet.callMethod({
-        contractId: AuthContract,
+        contractId: CarbonFootprintContract,
         method: 'verify_ticket',
         args: {
           ticket_id: ticketId,
