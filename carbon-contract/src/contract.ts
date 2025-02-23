@@ -65,4 +65,18 @@ class CarbonFootprint {
   get_user_tickets({ account_id }: { account_id: string }): Ticket[] {
     return this.tickets[account_id] || [];
   }
+
+  @view({})
+  get_pending_tickets(): Ticket[] {
+    const pendingTickets: Ticket[] = [];
+    for (const accountId in this.tickets) {
+      const userTickets = this.tickets[accountId];
+      userTickets.forEach(ticket => {
+        if (ticket.status === 'Pending') {
+          pendingTickets.push(ticket);
+        }
+      });
+    }
+    return pendingTickets;
+  }
 }

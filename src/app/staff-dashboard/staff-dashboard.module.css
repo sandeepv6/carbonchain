@@ -30,7 +30,7 @@
 
 .ticketGrid {
   display: grid;
-  grid-template-columns: 350px 1fr;
+  grid-template-columns: 420px 1fr;
   gap: 2rem;
   height: calc(100vh - 200px);
 }

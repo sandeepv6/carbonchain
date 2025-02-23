@@ -32,7 +32,7 @@ export default function StaffDashboard() {
     }
   };
 
-  const handleVerifyTicket = async (ticketId, carbonReduction) => {
+  const handleVerifyTicket = async (ticketId) => {
     setIsProcessing(true);
     try {
       await wallet.callMethod({
@@ -40,8 +40,7 @@ export default function StaffDashboard() {
         method: 'verify_ticket',
         args: {
           ticket_id: ticketId,
-          carbon_reduction: carbonReduction,
-          tokens_to_mint: calculateTokens(carbonReduction)
+          account_id: signedAccountId
         }
       });
       await fetchPendingTickets();
@@ -50,11 +49,6 @@ export default function StaffDashboard() {
       console.error('Error verifying ticket:', error);
     }
     setIsProcessing(false);
-  };
-
-  const calculateTokens = (carbonReduction) => {
-    // Example: 1 token per metric ton of carbon reduced
-    return carbonReduction;
   };
 
   return (
@@ -77,11 +71,11 @@ export default function StaffDashboard() {
                 >
                   <div className={styles.ticketHeader}>
                     <h3>Ticket #{ticket.id}</h3>
-                    <span className={styles.submitter}>{ticket.account_id}</span>
+                    <span className={styles.submitter}>{ticket.accountId}</span>
                   </div>
                   <div className={styles.ticketMeta}>
-                    <p>Submitted: {new Date(ticket.created_at).toLocaleDateString()}</p>
-                    <p>AI Estimated Reduction: {ticket.ai_estimation} MT</p>
+                    <p>Submitted: {new Date(ticket.timestamp).toLocaleDateString()}</p>
+                    <p>Carbon Reduction: {ticket.carbonReduction} MT</p>
                   </div>
                 </div>
               ))}
@@ -92,37 +86,21 @@ export default function StaffDashboard() {
             {selectedTicket ? (
               <div className={styles.detailsCard}>
                 <h2>Review Details</h2>
-                <div className={styles.documentPreview}>
-                  <iframe 
-                    src={selectedTicket.document_url} 
-                    title="Document Preview"
-                  ></iframe>
-                </div>
                 <div className={styles.aiAnalysis}>
                   <h3>AI Analysis</h3>
-                  <pre>{JSON.stringify(selectedTicket.ai_analysis, null, 2)}</pre>
+                  <p><strong>Carbon Reduction:</strong> {selectedTicket.carbonReduction} MT</p>
+                  <p><strong>Percentage Reduction:</strong> {selectedTicket.percentageReduction}%</p>
+                  <p><strong>Explanation:</strong> {selectedTicket.explanation}</p>
                 </div>
                 <div className={styles.verificationForm}>
-                  <h3>Verification</h3>
-                  <div className={styles.formGroup}>
-                    <label>Verified Carbon Reduction (MT)</label>
-                    <input 
-                      type="number" 
-                      defaultValue={selectedTicket.ai_estimation}
-                      min="0"
-                      step="0.1"
-                    />
-                  </div>
+                  {/* <h3>Verification</h3> */}
                   <div className={styles.formActions}>
                     <button 
                       className={styles.approveButton}
-                      onClick={() => handleVerifyTicket(selectedTicket.id, selectedTicket.ai_estimation)}
+                      onClick={() => handleVerifyTicket(selectedTicket.id)}
                       disabled={isProcessing}
                     >
-                      {isProcessing ? 'Processing...' : 'Approve & Mint Tokens'}
-                    </button>
-                    <button className={styles.rejectButton}>
-                      Request Revision
+                      {isProcessing ? 'Processing...' : 'Approve & Verify'}
                     </button>
                   </div>
                 </div>
