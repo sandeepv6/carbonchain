@@ -20,4 +20,4 @@ bower_components/
 Thumbs.db
 # End Generation Here
 package-lock.json
-./uploads/*
+uploads/
