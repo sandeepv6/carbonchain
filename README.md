@@ -79,10 +79,3 @@ This project is a blockchain-based platform built on the NEAR protocol, designed
 - [Sandeep Virk](https://github.com/sandeepv6)
 - [Vishesh Gupta](https://github.com/VG-05)
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For questions or support, please contact [your-email@example.com](mailto:your-email@example.com).
