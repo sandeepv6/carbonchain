@@ -1,4 +1,6 @@
-# Carbon Chain - Hack Canada 2025
+# Carbon Chain - Hack Canada 2025 Winner
+
+## 3rd Place for Best Use of NEAR Protocol
 
 This project is a blockchain-based platform built on the NEAR protocol, designed to incentivize carbon footprint reduction initiatives. It allows users to submit their carbon reduction efforts, which are then verified by staff. Upon verification, users are rewarded with fungible tokens that represent their contribution to reducing carbon emissions.
 
