@@ -16,7 +16,7 @@ This project is a blockchain-based platform built on the NEAR protocol, designed
 - **Next.js**: Frontend framework for building the user interface.
 - **NEAR Protocol**: Blockchain platform for deploying smart contracts.
 - **NEP-141**: Standard for fungible tokens on NEAR.
-- **React**: JavaScript library for building user interfaces.
+- **React**: JavaScript library for building user interface.
 - **TypeScript**: Superset of JavaScript for type safety.
 
 ## Getting Started
